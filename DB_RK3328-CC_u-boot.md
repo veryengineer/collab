@@ -1,4 +1,32 @@
-########################FDISK for Ubuntu Jammy/Lunar arm64
+######################u-boot compile branch 2022.10 for roc-cc-rk3328
+
+ 
+    
+sudo apt-get install gcc gcc-aarch64-linux-gnu install bc bison build-essential coccinelle   device-tree-compiler dfu-util efitools flex gdisk graphviz imagemagick   liblz4-tool libgnutls28-dev libguestfs-tools libncurses-dev   libpython3-dev libsdl2-dev libssl-dev lz4 lzma lzma-alone openssl   pkg-config python3 python3-asteval python3-coverage python3-filelock   python3-pkg-resources python3-pycryptodome python3-pyelftools   python3-pytest python3-pytest-xdist python3-sphinxcontrib.apidoc   python3-sphinx-rtd-theme python3-subunit python3-testtools   python3-virtualenv swig uuid-dev
+
+
+sudo apt update
+sudo apt dist-upgrade
+
+
+git clone --depth 1 https://github.com/ARM-software/arm-trusted-firmware.git
+cd arm-trusted-firmware
+make realclean
+
+make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3328
+cd ..
+
+
+git clone -b "u-boot/v2022.10/roc-rk3328-cc" https://github.com/libre-computer-project/libretech-u-boot.git
+cd-libretech-u-boot
+export BL31=../arm-trusted-firmware/build/rk3328/release/bl31/bl31.elf
+
+make roc-cc-rk3328_defconfig
+make CROSS_COMPILE=aarch64-linux-gnu-
+
+
+
+######################## FDISK for Ubuntu Jammy/Lunar arm64
 
     Run fdisk as root: sudo fdisk /dev/sdb
     Type g to set GPT Table
@@ -25,7 +53,7 @@
 After completing these steps, you should have approximately 13MB of empty space at the beginning of the image for a bootloader.
 
 
-##################Erase with 000000000000000000000
+################## Erase with 000000000000000000000
 
 sudo dd if=/dev/zero of=/dev/sdb1 bs=1M
 
