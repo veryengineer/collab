@@ -69,10 +69,10 @@ make CROSS_COMPILE=aarch64-linux-gnu-
 sudo dd if=/dev/zero of=/dev/sdb1 bs=1M
 
 
-dd: error writing '/dev/sdb1': No space left on device
-3667+0 records in
-3666+0 records out
-3844619264 bytes (3.8 GB, 3.6 GiB) copied, 614.812 s, 6.3 MB/s
+#dd: error writing '/dev/sdb1': No space left on device
+#3667+0 records in
+#3666+0 records out
+#3844619264 bytes (3.8 GB, 3.6 GiB) copied, 614.812 s, 6.3 MB/s
 
 
 
