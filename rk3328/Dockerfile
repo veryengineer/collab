@@ -44,11 +44,13 @@ RUN cd u-boot \
 
 FROM deps as assemble
 ARG SECTORS_TO_ADD=22528
-ARG IMG_FILE=20230430-jammy-preinstalled-server-arm64.img
+ARG IMG_FILE=20231014.2-jammy-preinstalled-server-arm64.img
 ARG IMG_URL=https://archive.very.engineer
-ARG OUT_IMG=rk3328-jammy-20230430.img
+ARG IMG_SHASUM=8e19655b5a0f84d2a5f9c9c57404723355f4e215764a93b67d0d68249c44c442
+ARG OUT_IMG=rk3328-jammy-20231014.2.img
 COPY --from=build /build/artifacts/* /build/artifacts/
 RUN curl -L -O ${IMG_URL}/${IMG_FILE}.xz \
+ && echo "${IMG_SHASUM}  ${IMG_FILE}.xz" | shasum -c \
  && unxz ${IMG_FILE}.xz \
  && mv ${IMG_FILE} ${OUT_IMG}
 RUN export IMAGE_SIZE=$(sfdisk --json ${OUT_IMG} | jq ".partitiontable.lastlba + 1 + 64") \
