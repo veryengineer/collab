@@ -16,8 +16,8 @@ RUN apt update \
 RUN mkdir -p /build/artifacts
 
 FROM deps AS download
-ARG ARM_FIRMWARE_TAG=lts-v2.8.6
-ARG ARM_FIRMWARE_SHASUM=489f36323dbeb426d3c129a49ced9d76330027fbc23fd8f533489561e1fc84ef
+ARG ARM_FIRMWARE_TAG=lts-v2.8.9
+ARG ARM_FIRMWARE_SHASUM=9b1a9ce650e86017d274ed9389b3ff634e4c9c88f936ffffaf86c7d0cb22290e
 ARG UBOOT_TAG=2023.10
 ARG UBOOT_SHASUM=b22664ee56640bba87068a7cdcd7cb50f956973a348e844788d2fb882fe0dc55
 RUN curl -L -O https://github.com/ARM-software/arm-trusted-firmware/archive/refs/tags/${ARM_FIRMWARE_TAG}.tar.gz \
