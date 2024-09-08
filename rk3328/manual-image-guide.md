@@ -33,7 +33,7 @@ cd ..
 
 ```
 git clone -b "v2023.04/roc-rk3328-cc" https://github.com/libre-computer-project/libretech-u-boot.git
-cd-libretech-u-boot
+cd libretech-u-boot
 ```
 
 ### Export Arm Trusted
