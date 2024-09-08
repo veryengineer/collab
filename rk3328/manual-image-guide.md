@@ -149,6 +149,8 @@ sudo wget https://mirrors.cloud.tencent.com/ubuntu-cdimage/ubuntu-server/daily-p
 ### Extract and mount image
 
 ```
+sudo xz -d oracular-preinstalled-server-arm64.img.xz
+
 sudo losetup -fP --show oracular-preinstalled-server-arm64.img
 ```
 
