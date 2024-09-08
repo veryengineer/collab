@@ -55,9 +55,28 @@ make CROSS_COMPILE=aarch64-linux-gnu-
 ```
 
 
-## FDISK for Ubuntu Jammy/Lunar arm64
+## Prepare SD Card
 
-Run fdisk as root: `sudo fdisk /dev/sdb`
+Insert SD-Card into your Cardreader or USB-Cardreader Dongle and plug it in a free USB Port on your Machine.
+
+
+###Run "lsblk" to make sure, it is a mounted storage device as "sdb":
+
+```
+lsblk
+´´´
+
+
+###Partitioning the SD-Card
+
+To manually add the correct Partitiontables for booting the Image run FDISK for Ubuntu Jammy/Lunar (/arm64)
+
+Run fdisk as root:
+```
+sudo fdisk /dev/sdb`
+´´´
+
+Follow these Steps:
 
 ```
 Type g to set GPT Table
@@ -81,7 +100,7 @@ Type w to write the changes to disk.
 After completing these steps, you should have approximately 13MB of empty space at the beginning of the image for a bootloader.
 
 
-### Erase with 000000000000000000000
+### OPTIONAL (for prev. used SD-Cards): Erase with 000000000000000000000
 
 ```console
 $ sudo dd if=/dev/zero of=/dev/sdb1 bs=1M
