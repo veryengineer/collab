@@ -100,7 +100,7 @@ Type w to write the changes to disk.
 After completing these steps, you should have approximately 13MB of empty space at the beginning of the image for a bootloader.
 
 
-### OPTIONAL (for prev. used SD-Cards): Erase with 000000000000000000000
+### Prime/Erase the SD-Card with 000000000000000000000
 
 ```console
 $ sudo dd if=/dev/zero of=/dev/sdb1 bs=1M
