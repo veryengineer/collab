@@ -64,7 +64,7 @@ Insert SD-Card into your Cardreader or USB-Cardreader Dongle and plug it in a fr
 
 ```
 lsblk
-´´´
+```
 
 
 ### Partitioning the SD-Card
@@ -74,7 +74,7 @@ To manually add the correct Partitiontables for booting the Image run FDISK for 
 Run fdisk as root:
 ```
 sudo fdisk /dev/sdb`
-´´´
+```
 
 Follow these Steps:
 
