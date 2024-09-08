@@ -169,3 +169,9 @@ At this point I create an image AFTER you manage the bootflags to match the orig
 cd libretech-u-boot
 sudo dd if=u-boot-rockchip.bin of=/dev/sdb seek=64
 ```
+# Cleanup
+
+```
+cd ..
+sudo rm -r ./oracular-preinstalled-server-arm64.img.xz ./libretech-u-boot/ ./arm-trusted-firmware/
+```
