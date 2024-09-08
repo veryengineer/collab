@@ -1,4 +1,4 @@
-# u-boot compile branch 2022.10 for roc-cc-rk3328
+# u-boot compile branch 2023.04 for roc-cc-rk3328
 
 ### Dependencies
 
