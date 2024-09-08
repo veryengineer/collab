@@ -1,6 +1,6 @@
 # u-boot compile branch 2023.04 for roc-cc-rk3328
 
-### Dependencies
+## Dependencies
 
 ```
 sudo apt-get install gcc gcc-aarch64-linux-gnu git bc bison build-essential coccinelle device-tree-compiler dfu-util efitools flex gdisk graphviz imagemagick liblz4-tool libgnutls28-dev libguestfs-tools libncurses-dev libpython3-dev libsdl2-dev libssl-dev lz4 lzma lzma-alone openssl pkg-config python3 python3-asteval python3-coverage python3-filelock python3-pkg-resources python3-pycryptodome python3-pyelftools python3-pytest python3-pytest-xdist python3-sphinxcontrib.apidoc python3-sphinx-rtd-theme python3-subunit python3-testtools python3-virtualenv swig uuid-dev
@@ -13,7 +13,7 @@ sudo apt update
 sudo apt dist-upgrade
 ```
 
-### Clone Arm Trusted Firmware Repo and compile
+## Clone Arm Trusted Firmware Repo and compile
 
 ```
 git clone --depth 1 https://github.com/ARM-software/arm-trusted-firmware.git
@@ -29,7 +29,7 @@ make CROSS_COMPILE=aarch64-linux-gnu- PLAT=rk3328
 cd ..
 ```
 
-### Clone Libretech U-Boot branch
+## Clone Libretech U-Boot branch
 
 ```
 git clone -b "v2023.04/roc-rk3328-cc" https://github.com/libre-computer-project/libretech-u-boot.git
@@ -48,7 +48,7 @@ export BL31=../arm-trusted-firmware/build/rk3328/release/bl31/bl31.elf
 make roc-cc-rk3328_defconfig
 ```
 
-### Compile boot loader files
+### Compile bootloader files
 
 ```
 make CROSS_COMPILE=aarch64-linux-gnu-
@@ -60,11 +60,13 @@ make CROSS_COMPILE=aarch64-linux-gnu-
 Insert SD-Card into your Cardreader or USB-Cardreader Dongle and plug it in a free USB Port on your Machine.
 
 
-### Run "lsblk" to make sure, it is a mounted storage device as "sdb":
+### Run "lsblk" to asure, it is mounted as mass storage device "sdb":
 
 ```
 lsblk
 ```
+
+In case the SD-Card shows up as a different device, (eg.: sdc) adapt the codelines accordingly before running them!
 
 
 ### Partitioning the SD-Card
@@ -138,7 +140,7 @@ $ sudo dd if=/dev/zero of=/dev/sdb bs=512 seek=64 count=24447
 
 ## Cloning
 
-Download ubuntu oracular preinstalled server:
+Download ubuntu Oracular preinstalled server:
 
 
 ```
@@ -156,10 +158,16 @@ sudo losetup -fP --show oracular-preinstalled-server-arm64.img
 
 ### Clone each partition to each corresponding partition on the removable media.
 
+Run lsblk and check the mountpoint of the p1,p14 & p15 loops.
+
+By default those should be on loop0.
+
+###In case of a different loop, please substitute accordingly before running the command below.
+
 ```
-sudo dd if=/dev/loop0p1 of=/dev/sb1 bs=1M status=progress
-sudo dd if=/dev/loop0p14 of=/dev/sb14 bs=1M status=progress
-sudo dd if=/dev/loop0p15 of=/dev/sb15 bs=1M status=progress
+sudo dd if=/dev/loop0p1 of=/dev/sdb1 bs=1M status=progress
+sudo dd if=/dev/loop0p14 of=/dev/sdb14 bs=1M status=progress
+sudo dd if=/dev/loop0p15 of=/dev/sdb15 bs=1M status=progress
 ```
 
 At this point I create an image AFTER you manage the bootflags to match the original image (boot, esp, legacy boot); this way the image has no #bootloader.
@@ -175,5 +183,5 @@ sudo dd if=u-boot-rockchip.bin of=/dev/sdb seek=64
 
 ```
 cd ..
-sudo rm -r ./oracular-preinstalled-server-arm64.img.xz ./libretech-u-boot/ ./arm-trusted-firmware/
+sudo rm -rf ./oracular-preinstalled-server-arm64.img.xz ./libretech-u-boot/ ./arm-trusted-firmware/
 ```
