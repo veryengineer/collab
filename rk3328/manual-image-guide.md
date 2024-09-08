@@ -60,14 +60,14 @@ make CROSS_COMPILE=aarch64-linux-gnu-
 Insert SD-Card into your Cardreader or USB-Cardreader Dongle and plug it in a free USB Port on your Machine.
 
 
-###Run "lsblk" to make sure, it is a mounted storage device as "sdb":
+### Run "lsblk" to make sure, it is a mounted storage device as "sdb":
 
 ```
 lsblk
 ´´´
 
 
-###Partitioning the SD-Card
+### Partitioning the SD-Card
 
 To manually add the correct Partitiontables for booting the Image run FDISK for Ubuntu Jammy/Lunar (/arm64)
 
