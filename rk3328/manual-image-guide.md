@@ -162,5 +162,6 @@ At this point I create an image AFTER you manage the bootflags to match the orig
 ## Flash compiled boot loader
 
 ```
+cd libretech-u-boot
 sudo dd if=u-boot-rockchip.bin of=/dev/sdb seek=64
 ```
