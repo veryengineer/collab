@@ -1,6 +1,7 @@
 # u-boot compile branch 2023.04 for roc-cc-rk3328
 
-## Dependencies
+
+### Dependencies
 
 ```
 sudo apt-get install gcc gcc-aarch64-linux-gnu git bc bison build-essential coccinelle device-tree-compiler dfu-util efitools flex gdisk graphviz imagemagick liblz4-tool libgnutls28-dev libguestfs-tools libncurses-dev libpython3-dev libsdl2-dev libssl-dev lz4 lzma lzma-alone openssl pkg-config python3 python3-asteval python3-coverage python3-filelock python3-pkg-resources python3-pycryptodome python3-pyelftools python3-pytest python3-pytest-xdist python3-sphinxcontrib.apidoc python3-sphinx-rtd-theme python3-subunit python3-testtools python3-virtualenv swig uuid-dev
@@ -63,7 +64,7 @@ Insert SD-Card into your Cardreader or USB-Cardreader Dongle and plug it in a fr
 ### Run "lsblk" to asure, it is mounted as mass storage device "sdb":
 
 ```
-lsblk
+sudo lsblk
 ```
 
 In case the SD-Card shows up as a different device, (eg.: sdc) adapt the codelines accordingly before running them!
@@ -73,7 +74,9 @@ In case the SD-Card shows up as a different device, (eg.: sdc) adapt the codelin
 
 To manually add the correct Partitiontables for booting the Image run FDISK for Ubuntu Jammy/Lunar (/arm64)
 
+
 Run fdisk as root:
+
 ```
 sudo fdisk /dev/sdb`
 ```
@@ -140,15 +143,15 @@ $ sudo dd if=/dev/zero of=/dev/sdb bs=512 seek=64 count=24447
 
 ## Cloning Oracular server
 
-Download Ubuntu Oracular preinstalled server:
 
+### Download Ubuntu Oracular preinstalled Server:
 
 ```
 sudo wget https://mirrors.cloud.tencent.com/ubuntu-cdimage/ubuntu-server/daily-preinstalled/current/oracular-preinstalled-server-arm64.img.xz
 ```
 
 
-### Extract and mount image
+### Extract and mount the .img
 
 ```
 sudo xz -d oracular-preinstalled-server-arm64.img.xz
@@ -158,11 +161,19 @@ sudo losetup -fP --show oracular-preinstalled-server-arm64.img
 
 ### Clone each partition to each corresponding partition on the removable media.
 
+
 Run lsblk and check the mountpoint of the p1,p14 & p15 loops.
+
+```
+sudo lsblk
+```
+
 
 By default those should be on loop0.
 
+
 ### In case of a different loop, please substitute accordingly before running the command below.
+
 
 ```
 sudo dd if=/dev/loop0p1 of=/dev/sdb1 bs=1M status=progress
@@ -175,11 +186,16 @@ At this point I create an image AFTER you manage the bootflags to match the orig
 
 ## Flash compiled boot loader
 
+
 ```
 cd libretech-u-boot
 sudo dd if=u-boot-rockchip.bin of=/dev/sdb seek=64
 ```
+
 # Cleanup
+
+For Cleaning up the previously downloaded .img and Github Directories, run the following commands:
+
 
 ```
 cd ..
