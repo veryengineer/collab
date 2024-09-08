@@ -127,7 +127,7 @@ $ sudo dd if=/dev/zero of=/dev/sdb15 bs=1M
 #103809536 bytes (104 MB, 99 MiB) copied, 17.8615 s, 5.8 MB/s
 ```
 
-### erase boot loader:
+### Erase the bootloader
 
 ```console
 $ sudo dd if=/dev/zero of=/dev/sdb bs=512 seek=64 count=24447
@@ -138,9 +138,9 @@ $ sudo dd if=/dev/zero of=/dev/sdb bs=512 seek=64 count=24447
 
 ```
 
-## Cloning
+## Cloning Oracular server
 
-Download ubuntu Oracular preinstalled server:
+Download Ubuntu Oracular preinstalled server:
 
 
 ```
@@ -162,7 +162,7 @@ Run lsblk and check the mountpoint of the p1,p14 & p15 loops.
 
 By default those should be on loop0.
 
-###In case of a different loop, please substitute accordingly before running the command below.
+### In case of a different loop, please substitute accordingly before running the command below.
 
 ```
 sudo dd if=/dev/loop0p1 of=/dev/sdb1 bs=1M status=progress
