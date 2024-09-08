@@ -140,7 +140,11 @@ $ sudo dd if=/dev/zero of=/dev/sdb bs=512 seek=64 count=24447
 
 Download ubuntu oracular preinstalled server:
 
-https://mirrors.cloud.tencent.com/ubuntu-cdimage/ubuntu-server/daily-preinstalled/current/oracular-preinstalled-server-arm64.img.xz
+
+```
+sudo wget https://mirrors.cloud.tencent.com/ubuntu-cdimage/ubuntu-server/daily-preinstalled/current/oracular-preinstalled-server-arm64.img.xz
+```
+
 
 ### Extract and mount image
 
