@@ -140,12 +140,12 @@ $ sudo dd if=/dev/zero of=/dev/sdb bs=512 seek=64 count=24447
 
 Download ubuntu lunar preinstalled server:
 
-https://mirrors.cloud.tencent.com/ubuntu-cdimage/ubuntu-server/daily-preinstalled/current/lunar-preinstalled-server-arm64.img.xz
+https://mirrors.cloud.tencent.com/ubuntu-cdimage/ubuntu-server/daily-preinstalled/current/oracular-preinstalled-server-arm64.img.xz
 
 ### Extract and mount image
 
 ```
-sudo losetup -fP --show lunar-preinstalled-server-arm64.img
+sudo losetup -fP --show oracular-preinstalled-server-arm64.img
 ```
 
 ### Clone each partition to each corresponding partition on the removable media.
