@@ -138,7 +138,7 @@ $ sudo dd if=/dev/zero of=/dev/sdb bs=512 seek=64 count=24447
 
 ## Cloning
 
-Download ubuntu lunar preinstalled server:
+Download ubuntu oracular preinstalled server:
 
 https://mirrors.cloud.tencent.com/ubuntu-cdimage/ubuntu-server/daily-preinstalled/current/oracular-preinstalled-server-arm64.img.xz
 
